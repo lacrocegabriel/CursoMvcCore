@@ -21,6 +21,8 @@ namespace DevIO.Business.Services
         {
             if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
 
+            produto.DataCadastro = DateTime.Now;
+
             await _produtoRepository.Adicionar(produto);
         }
 

@@ -24,7 +24,7 @@ namespace DevIO.Business.Services
         public async Task Adicionar(Fornecedor fornecedor)
         {
             if (!ExecutarValidacao(new FornecedorValidation(), fornecedor)
-                && !ExecutarValidacao(new EnderecoValidation(), fornecedor.Endereco))  return;
+                || !ExecutarValidacao(new EnderecoValidation(), fornecedor.Endereco))  return;
             
             if(_fornecedorRepository.Buscar(f => f.Documento == fornecedor.Documento).Result.Any())
             {
@@ -64,6 +64,14 @@ namespace DevIO.Business.Services
                 return;
             }
 
+            var endereco = await _enderecoRepository.ObterEnderecoPorFornecedor(id);
+
+            if(endereco != null)
+            {
+                await _enderecoRepository.Remover(endereco.Id);
+            }
+            
+            
             await _fornecedorRepository.Remover(id);
         }
 
