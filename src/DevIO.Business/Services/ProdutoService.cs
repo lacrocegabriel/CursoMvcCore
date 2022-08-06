@@ -21,7 +21,7 @@ namespace DevIO.Business.Services
         {
             if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
 
-            _produtoRepository.Adicionar(produto);
+            await _produtoRepository.Adicionar(produto);
         }
 
         public async Task Atualizar(Produto produto)

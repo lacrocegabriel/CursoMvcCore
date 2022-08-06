@@ -27,8 +27,6 @@ namespace DevIO.Data.Context
                 .SelectMany(e => e.GetForeignKeys())) 
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
-           
-
             base.OnModelCreating(modelBuilder);
         }
     }
