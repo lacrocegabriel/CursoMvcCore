@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DevIO.App.Configuration
 {
@@ -19,6 +20,8 @@ namespace DevIO.App.Configuration
                 o.ModelBindingMessageProvider.SetUnknownValueIsInvalidAccessor((x) => "O valor preenchido é inválido para esse campo.");
                 o.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(x => "O campo deve ser numérico");
                 o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "Esse campo precisa ser preenchido");
+
+                o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
 
             return services;
