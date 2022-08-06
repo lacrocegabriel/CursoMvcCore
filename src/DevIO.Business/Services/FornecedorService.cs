@@ -70,7 +70,7 @@ namespace DevIO.Business.Services
         public void Dispose()
         {
             _fornecedorRepository?.Dispose();
-            _enderecoRepository?.Dispose();  
+            _enderecoRepository?.Dispose();
         }
     }
 }
